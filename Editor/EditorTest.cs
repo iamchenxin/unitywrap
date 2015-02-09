@@ -4,12 +4,12 @@ using UnityEditor;
 
 public class EditorTest : EditorWindow {
 
-
+   
 	[MenuItem("Window/EditorTest")]
 	static void Init()
 	{
 		// Get existing open window or if none, make a new one:
-		EditorTest window = (EditorTest)EditorWindow.GetWindow(typeof(EditorTest));
+        EditorWindow.GetWindow(typeof(EditorTest));
 	}
 
 

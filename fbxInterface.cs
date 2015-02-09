@@ -84,7 +84,7 @@ public class XXJoint_io
 [StructLayout(LayoutKind.Sequential),Serializable]
 public class XXSkeleton_io
 {
-		IntPtr mJoint_array; // XXJoint_io* mJoint_array;
+		public IntPtr mJoint_array; // XXJoint_io* mJoint_array;
 		public int mCount;
 		public int mStructSize_joint; // used to check if there is error in made sequence struct in C sharp
 }
@@ -168,6 +168,23 @@ public class IntPtr_Itor<TRealType>{
 		mPtr_int+=count*mTypeSize;
 		mPtr = new IntPtr(mPtr_int);
 	}
+}
+
+public class XXUtilT<TRealType>
+{
+    public static TRealType ConverPTR(IntPtr ptr){
+        return (TRealType)Marshal.PtrToStructure(ptr, typeof(TRealType));
+    }
+
+
+}
+
+public class XXUtil
+{
+    public static Vector3 GetVector3(float[] data)
+    {
+        return new Vector3(data[0] * 0.01f, data[1] * 0.01f, data[2] * 0.01f);
+    }
 }
 // !32X64>>
 
