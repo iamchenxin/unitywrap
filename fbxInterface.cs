@@ -148,19 +148,23 @@ public class IntPtr_Itor<TRealType>{
 		mPtr_int = ptr.ToInt32();
 		mTypeSize = Marshal.SizeOf(typeof(TRealType));
 	}
-	TRealType MoveAndRead(int count){
+    public TRealType MoveAndRead(int count)
+    {
 		TRealType tmp = (TRealType) Marshal.PtrToStructure( new IntPtr(mPtr_int),typeof(TRealType) );
 		mPtr_int+=count*mTypeSize;
 		return tmp;
 	}
-	TRealType GetAt(int lindex){
+    public TRealType GetAt(int lindex)
+    {
 		return (TRealType) Marshal.PtrToStructure( new IntPtr(mPtr_int+lindex*mTypeSize),typeof(TRealType) );
 	}
-	TRealType Get(){
+    public TRealType Get()
+    {
 		return (TRealType) Marshal.PtrToStructure( mPtr,typeof(TRealType) );
 	}
 
-	void Move(int count){
+    public void Move(int count)
+    {
 		mPtr_int+=count*mTypeSize;
 		mPtr = new IntPtr(mPtr_int);
 	}
@@ -173,13 +177,13 @@ public class IntPtr_Itor<TRealType>{
 
 public class IFbxFile{
 	[DllImport("XXFbxDll")]
-	static extern int XXLoad(string fname);
+	public static extern int XXLoad(string fname);
 
 	[DllImport("XXFbxDll")]
-	static extern int XXGet_All_Data(int file_id, out IntPtr outData); //XXGet_All_Data(int file_id, XXFile_All_Data** outData);
+	public static extern int XXGet_All_Data(int file_id, out IntPtr outData); //XXGet_All_Data(int file_id, XXFile_All_Data** outData);
 
 	[DllImport("XXFbxDll")]
-	static extern void XXClose(int file_id);
+	public static extern void XXClose(int file_id);
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

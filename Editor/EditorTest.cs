@@ -22,7 +22,8 @@ public class EditorTest : EditorWindow {
 
 		if (GUILayout.Button("Test"))
 		{
-			
+			FileReader reader =new FileReader();
+            reader.Read(mFileName);
 		}
 	}
 
