@@ -15,16 +15,30 @@ public class EditorTest : EditorWindow {
 
 	string mFileName;
 	int mFileid;
+    SkeletonTest ske;
 
 	void OnGUI()
 	{
 		mFileName = EditorGUILayout.TextField(mFileName);
 
-		if (GUILayout.Button("Test"))
+		if (GUILayout.Button("load"))
 		{
-			FileReader reader =new FileReader();
-            reader.Read(mFileName);
+            if(ske==null){ske = new SkeletonTest();}
+            ske.Read(mFileName);
 		}
+        if (GUILayout.Button("skeleton"))
+        {
+            if(ske!=null){
+                ske.ShowSkeleton();
+            }
+           
+        }
+        if (GUILayout.Button("Flat_skeleton"))
+        {
+            if(ske!=null){
+                ske.ShowSkeleton_flat();
+            }
+        }
 	}
 
 
